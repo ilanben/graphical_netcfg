@@ -7,12 +7,13 @@ class App():
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("devices networks")
+        self.labels = []
         self.update_clock()
         self.root.mainloop()
 
     def update_clock(self):
         i=0
-        
+
         #This is the path of adt when intsalling android studio 1.2 on windows
         adb_absolute_path = "C:\\Users\\ilan.MAXTECH\\AppData\\Local\\Android\\Sdk\\Platform-tools\\"
 
@@ -32,7 +33,12 @@ class App():
 #            lb = Label(self.root, text="")
 #            lb.grid(row=1, column=line)
 ###########################
-            
+        #destroy all old labels so that they can be garbage collected
+        for label in self.labels:
+            label.grid_remove()
+            label.destroy()
+        self.labels.clear();
+
         #print netcfg for each device
         for device in device_list:
 
@@ -48,6 +54,9 @@ class App():
             lbblank = Label(self.root,text="\t\t")
             lbblank.grid(row=1, column=i+1)
             i += 2
+
+            self.labels.append(lb)
+            self.labels.append(lbblank)
 
         self.root.geometry(str(device_list.__len__()*450)+"x700")
         self.root.after(1000, self.update_clock)

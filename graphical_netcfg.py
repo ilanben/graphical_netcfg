@@ -46,10 +46,10 @@ class App():
             netcfg_output = proc.communicate()[0].decode()
 
             # add a new label to the screen
-            lb = Label(self.root, text=device_serial + "\n" + netcfg_output)
+            lb = Label(self.root, text=device_serial + "\n" +"interface   status \t\t ip \t \t flag \t mac"+ "\n\n"+ netcfg_output)
             lb.grid(row=1, column=i)
 
-            lbblank = Label(self.root, text="\t\t")
+            lbblank = Label(self.root, text="\t\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|\n|")
             lbblank.grid(row=1, column=i + 1)
             i += 2
 
@@ -57,7 +57,8 @@ class App():
             self.labels.append(lbblank)
 
             # the // 50 is to get approximately the line avg length and not every char
-            var = netcfg_output.__len__() // 50
+            # +5 is the static additional lines
+            var = netcfg_output.__len__() // 50 + 3
             if var > maxRowsColumn:
                 maxRowsColumn = var
 

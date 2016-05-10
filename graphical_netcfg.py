@@ -1,6 +1,10 @@
+# for 3.x python:
 import tkinter as tk
-# for 2.7 python Tkinter
 from tkinter.ttk import *
+# # for 2.7 python:
+# import Tkinter as tk
+# from Tkinter import *
+
 from subprocess import call, Popen, PIPE, STDOUT
 
 
@@ -23,7 +27,10 @@ class App():
         for label in self.labels:
             label.grid_remove()
             label.destroy()
+        # for 3.x python:
         self.labels.clear();
+        ## for 2.7 python:
+        #del self.labels[:]
 
         # Get the list of connected devices
         cmd = adb_absolute_path + "adb.exe devices"

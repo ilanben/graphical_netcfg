@@ -13,6 +13,6 @@ NOTES:
 
 -This version works with python 3.x but its easy to change it and run it with 2.x
 
--adb.exe might be isntaled in another path then this project path. 
+-adb.exe might be instaled in another path then this project path. 
  If so, just change the path in the script.
 
